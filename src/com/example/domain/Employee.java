@@ -1,15 +1,22 @@
 package com.example.domain;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.text.NumberFormat;
+
 public class Employee
 {
-    public int employeeID;
-    public String employeeName;
-    public String employeeSSN;
-    public double employeeSalary;
+    private int employeeID;
+    private String employeeName;
+    private String employeeSSN;
+    private double employeeSalary;
 
-    public Employee()
+    public Employee(int employeeID, String employeeName, String employeeSSN, double employeeSalary)
     {
-
+        this.employeeID = employeeID;
+        this.employeeName = employeeName;
+        this.employeeSSN = employeeSSN;
+        this.employeeSalary = employeeSalary;
     }
 
     public int getEmployeeID()
@@ -17,19 +24,17 @@ public class Employee
         return employeeID;
     }
 
-    public void setEmployeeID(int employeeID)
-    {
-        this.employeeID = employeeID;
-    }
-
     public String getEmployeeName()
     {
         return employeeName;
     }
 
-    public void setEmployeeName(String employeeName)
+    public void setEmployeeName(@NotNull String employeeName)
     {
-        this.employeeName = employeeName;
+        if(!employeeName.equals(""))
+        {
+            this.employeeName = employeeName;
+        }
     }
 
     public String getEmployeeSSN()
@@ -37,18 +42,23 @@ public class Employee
         return employeeSSN;
     }
 
-    public void setEmployeeSSN(String employeeSSN)
-    {
-        this.employeeSSN = employeeSSN;
-    }
-
     public double getEmployeeSalary()
     {
         return employeeSalary;
     }
 
-    public void setEmployeeSalary(double employeeSalary)
+    public void raiseSalary(double increase)
     {
-        this.employeeSalary = employeeSalary;
+        if(increase >= 0)
+        {
+            employeeSalary += increase;
+        }
+    }
+
+    @Override
+    public String toString()
+    {
+        return("Employee ID: " + getEmployeeID() + "\nEmployee Name: " + getEmployeeName() + "\nEmployee SSN: "
+                + getEmployeeSSN() + "\nEmployee Salary: " + NumberFormat.getCurrencyInstance().format(getEmployeeSalary()));
     }
 }
