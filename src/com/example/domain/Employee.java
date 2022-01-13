@@ -1,7 +1,6 @@
 package com.example.domain;
 
 import org.jetbrains.annotations.NotNull;
-
 import java.text.NumberFormat;
 
 public class Employee
