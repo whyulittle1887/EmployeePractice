@@ -1,6 +1,5 @@
 package com.example.domain;
 
-import org.jetbrains.annotations.NotNull;
 import java.text.NumberFormat;
 
 public class Employee
@@ -28,9 +27,9 @@ public class Employee
         return employeeName;
     }
 
-    public void setEmployeeName(@NotNull String employeeName)
+    public void setEmployeeName(String employeeName)
     {
-        if(!employeeName.equals(""))
+        if(employeeName != null && !employeeName.equals(""))
         {
             this.employeeName = employeeName;
         }

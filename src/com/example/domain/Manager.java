@@ -30,7 +30,7 @@ public class Manager extends Employee
     {
         for(Employee emp: staff)
         {
-            if(employee == emp)
+            if(employee.equals(emp))
             {
                 return Arrays.asList(staff).indexOf(emp);
             }
@@ -79,9 +79,6 @@ public class Manager extends Employee
 
                     // Increment the count to add to the next index in the array
                     count++;
-
-                    // Set the main employeeCount to the temp count
-                    employeeCount = count;
                 }
                 else
                 {
@@ -97,6 +94,9 @@ public class Manager extends Employee
             {
                 // If we did, overwrite the main staff array with the tempArray
                 staff = tempArray;
+
+                // Set the main employeeCount to the temp count
+                employeeCount = count;
             }
         }
     }
