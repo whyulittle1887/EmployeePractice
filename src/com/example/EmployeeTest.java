@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.business.EmployeeStockPlan;
 import com.example.domain.*;
 
 public class EmployeeTest
@@ -12,18 +13,27 @@ public class EmployeeTest
         Employee admin2 = new Admin(702, "Joe Bloggs", "128-35-4967", 85_000.50);
         Employee director = new Director(12, "Susan Wheeler", "099-45-2340", 120_567.36, "Global Marketing", 1_000_000.00);
 
-//        printEmployee(engineer);
-//        printEmployee(director);
+        EmployeeStockPlan employeeStockPlan = new EmployeeStockPlan();
 
+        // See how much stock each employee type gets
+//        printEmployee(engineer);
+        printEmployee(engineer, employeeStockPlan);
+
+
+//        printEmployee(director);
+        printEmployee(director, employeeStockPlan);
+
+
+        manager.raiseSalary(10_000);
 //        printEmployee(manager);
-//        manager.raiseSalary(10_000);
-//        printEmployee(manager);
+        printEmployee(manager, employeeStockPlan);
 
 //        printEmployee(admin);
-//        admin.setEmployeeName("William Monroe");
+        admin.setEmployeeName("William Monroe");
 //        admin.setEmployeeName(null);
 //        admin.setEmployeeName("");
 //        printEmployee(admin);
+        printEmployee(admin, employeeStockPlan);
 
         // Print the number of employees in staff
         System.out.println("Number of Staff: " + ((Manager) manager).getEmployeeCount());
@@ -69,6 +79,13 @@ public class EmployeeTest
 
     public static void printEmployee(Employee employee)
     {
+        System.out.println("Employee Type: " + employee.getClass().getSimpleName());
         System.out.println(employee);
+    }
+
+    public static void printEmployee(Employee employee, EmployeeStockPlan employeeStockPlan)
+    {
+        printEmployee(employee);
+        System.out.println("Stock Options: " + employeeStockPlan.grantStock(employee) + "\n");
     }
 }
