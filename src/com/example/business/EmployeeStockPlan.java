@@ -6,19 +6,23 @@ import com.example.domain.Manager;
 
 public class EmployeeStockPlan
 {
+    private int directorShares = 1000;
+    private int managerShares = 100;
+    private int generalShares = 10;
+
     public int grantStock(Employee employee)
     {
         if (employee instanceof Director)
         {
-            return 1000;
+            return directorShares;
         }
         else if (employee instanceof Manager)
         {
-            return 100;
+            return managerShares;
         }
         else
         {
-            return 10;
+            return generalShares;
         }
     }
 }
